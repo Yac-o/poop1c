@@ -1,0 +1,44 @@
+import laAlianza.*
+import guerreros.*
+
+describe "Probamos a la Alizana"{
+    test "Test sobre la alianza"{
+
+        alianza.entrenarA(luke)
+        alianza.entrenarA(yoda)
+        alianza.entrenarA(r2d2)
+        alianza.entrenarA(c3p0)
+
+        alianza.reclutar(luke)
+        alianza.reclutar(yoda)
+        alianza.reclutar(r2d2)
+        alianza.reclutar(c3p0)
+
+        //  El tamaño del ejército es de solo 3 guerreros.
+        assert.equals(3, alianza.cantGuerreros())
+
+        //  Los miembros del ejército son Yoda, Arturito y C-3PO.
+        assert.equals([yoda, r2d2, c3p0], alianza.ejercito())
+
+        //  El poder total del ejército es 233
+        assert.equals(233, alianza.poderTotalDelEjercito())
+
+        //  No es un ejército poderoso.
+        assert.notThat(alianza.esEjercitoPoderoso())
+
+        //  Es invencible, no es poderoso pero tiene un campeón.
+        assert.that(alianza.esInvencible())
+
+        //  El guerrero débil con un parámetro de 59 es sólo Yoda.
+        assert.equals([yoda], alianza.guerrerosDebiles(59))
+
+        //  No gana batalla si el parámetro fuera de 250.
+        assert.notThat(alianza.ganaBatallaVs(250))
+
+        //  Poca salud y mucho poder es verdadero.
+        assert.that(alianza.pocaSaludYMuchoPoder())
+
+        //  Lsta de guerreros campeones es "Din Grogu" y "C-3PO."
+        assert.equals(["Yoda", "C-3P0"], alianza.listaDeNombres())
+    }
+}
